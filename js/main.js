@@ -9,8 +9,9 @@ function getUser() {
         request.open("GET", urlAfter)
         request.responseType = "json"
         
-        if (request.send()){
-            request.onload = function () {
+        request.send()
+
+        request.onload = function () {
             let Targetuser = request.response
             console.log(Targetuser) /* all data */
             console.log(Targetuser.avatar_url) /* pic */
@@ -21,7 +22,6 @@ function getUser() {
             document.getElementById("username").innerHTML = Targetuser.login
             console.log(Targetuser.bio) /* bio */
             document.getElementById("bio").innerHTML = Targetuser.bio
-            
             console.log(Targetuser.html_url) /* acc Link */
             document.getElementById("GithubAccLink").href = Targetuser.html_url
             console.log(Targetuser.public_repos) /* repo */
@@ -31,20 +31,17 @@ function getUser() {
             console.log(Targetuser.following) /* following */
             document.getElementById("following").innerHTML = Targetuser.following
             document.getElementById("info").className = "d-block";
+            
         }
-        }else {
-            alert("No User With ( " + user + " ) Name, Please Search With Diffrent Name");
-        }
-        
     }
     else { alert("Hey! You Did Not Enter Any User Name :)"); }
 
 }
 
 function closeMe() {
-    if (document.getElementById("info").classList.contains('d-block')){
+    if (document.getElementById("info").classList.contains('d-block')) {
         document.getElementById("info").className = "d-none";
-        
+
     }
 
 }
